@@ -52,8 +52,7 @@ class UserPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->login()
-            ->authGuard('admin');
+            ->login();
 
     }
 }
