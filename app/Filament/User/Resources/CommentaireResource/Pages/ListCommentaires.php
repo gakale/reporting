@@ -13,7 +13,9 @@ class ListCommentaires extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make('create-commentaire')
+            ->label('Ajouter un commentaire')
+            ,
         ];
     }
 }

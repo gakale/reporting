@@ -49,6 +49,7 @@ class User extends Authenticatable
 
     public function taches()
     {
-        return $this->hasMany(Tache::class, 'assigned_to');
+
+        return $this->belongsTo(Tache::class, 'assigned_to');
     }
 }

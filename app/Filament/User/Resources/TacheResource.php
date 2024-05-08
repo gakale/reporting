@@ -69,9 +69,9 @@ class TacheResource extends Resource
 
                 Select::make('status')
                 ->options([
-                    'en attente' => 'En attente',
-                    'en cours' => 'En cours',
-                    'terminé' => 'Terminé',
+                    'pending' => 'En attente',
+                    'completed' => 'Terminé',
+                    'important' => 'Important',
                 ])
                 ->label('Status de la tache')
 
@@ -109,10 +109,10 @@ class TacheResource extends Resource
                 Tables\Columns\TextColumn::make('status')
                 ->badge()
                 ->color(fn ($state) => match ($state) {
-                    'en attente' => 'info',
-                    'pending' => 'warning',
-                    'terminé' => 'success',
-                    
+                    'pending' => 'info',
+                    'completed' => 'success',
+                    'important' => 'danger',
+
                 })
             ])
             ->filters([
@@ -131,7 +131,8 @@ class TacheResource extends Resource
     public static function getRelations(): array
     {
         return [
-            TacheRelationManager::class,
+            RelationManagers\CommentsRelationManager::class,
+
         ];
     }
 
